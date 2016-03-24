@@ -84,14 +84,24 @@ Criando o manfest.json</p>
  
   "permissions": ["<all_urls>","tabs", "http://*/*", "https://*/*","activeTab","background"]
 }</pre></code>
-<p>No servidor 1, começe a jogar os peers.</p>
-<code><pre>$gluster peer probe aero-no1<br>
-$gluster peer probe aero-no2<br>
-$gluster peer probe aero-no3<br>
-$gluster peer probe aero-no4<br>
-$gluster peer probe aero-no5</pre></code>
-<p>Verifique os peers.</p>
-<code><pre>$gluster peer status</pre></code>
+<p>em event.html habilitamos o javascript do chrome tabs e chamamos nosso javascript, fazendo um loop na função.</p>
+<code><pre>function loopback (tab) {
+  
+  chrome.tabs.executeScript(null, {file: "script.js"});
+}
+
+
+chrome.browserAction.onClicked.addListener(loopback);</pre></code>
+<p>Em script.js temos o nosso código.</p>
+<code><pre>var a = document.body.textContent;
+var n = a.search("InitialChatFriendsList"); 
+for(var i=37; i<38; i++){
+var add = "'";
+var par1 = "]";
+var par2 = '"'; 
+var par3 = ';';
+var z =(a[n+i]+a[n+i+1]+a[n+i+2]+a[n+i+3]+a[n+i+4]+a[n+i+5]+a[n+i+6]+a[n+i+7]+a[n+i+8]+a[n+i+9]+a[n+i+10]+a[n+i+11]+a[n+i+12]+a[n+i+13]+a[n+i+14]+a[n+i+15]+a[n+i+16]+a[n+i+17]+a[n+i+18]+a[n+i+19]+a[n+i+20]+a[n+i+21]+a[n+i+22]+a[n+i+23]+a[n+i+24]+a[n+i+25]+a[n+i+26]+a[n+i+27]+a[n+i+28]+a[n+i+29]+a[n+i+30]+a[n+i+31]+a[n+i+32]+a[n+i+33]+a[n+i+34]+a[n+i+35]+a[n+i+36]+a[n+i+37]+a[n+i+38]+a[n+i+39]+a[n+i+40]+a[n+i+41]+a[n+i+42]+a[n+i+43]+a[n+i+44]+a[n+i+45]+a[n+i+46]+a[n+i+47]+a[n+i+48]+a[n+i+49]+a[n+i+50]+a[n+i+51]+a[n+i+52]+a[n+i+53]+a[n+i+54]+a[n+i+55]+a[n+i+56]+a[n+i+57]+a[n+i+58]+a[n+i+59]+a[n+i+60]+a[n+i+61]+a[n+i+62]+a[n+i+64]+a[n+i+65]+a[n+i+66]+a[n+i+67]+a[n+i+68]+a[n+i+69]+a[n+i+70]+a[n+i+71]+a[n+i+72]+a[n+i+73]+a[n+i+74]+a[n+i+75]+a[n+i+76]+a[n+i+77]+a[n+i+78]+a[n+i+79]+a[n+i+80]+a[n+i+81]+a[n+i+82]+a[n+i+83]+a[n+i+84]+a[n+i+85]+a[n+i+86]+a[n+i+87]+a[n+i+88]+a[n+i+89]+a[n+i+90]+a[n+i+91]+a[n+i+92]+a[n+i+93]+a[n+i+94]+a[n+i+95]+par2+par1+par3);
+console.log(z);}</pre></code>
 <p>Caso queira deixar o home compartilhado no gluster…<br>
 formate e monte.
 </p>
