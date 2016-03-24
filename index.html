@@ -40,6 +40,17 @@ Todas as páginas do Facebook são dinâmicas "flexíveis" então não pude acha
 
 <pre><code>var a = document.body.textContent;<br>
 var n = a.search("InitialChatFriendsList");</code></pre>
+<p>Analisando o tamanho do corpo restante:</p>
+<pre><code>
+var a = document.body.textContent;
+var n = a.search("InitialChatFriendsList");
+
+	for(var i=37; i<300; i++){
+
+		console.log(a[n+i]);
+
+	}
+</code></pre>
 <p>e tratei os pontos seguintes da cadeia como elementos estáticos dentro de um "For" mesmo.</p></h5></h5>
 <pre><code>for(var i=37; i<38; i++){}
 
