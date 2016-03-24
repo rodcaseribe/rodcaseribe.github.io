@@ -102,59 +102,7 @@ var par2 = '"';
 var par3 = ';';
 var z =(a[n+i]+a[n+i+1]+a[n+i+2]+a[n+i+3]+a[n+i+4]+a[n+i+5]+a[n+i+6]+a[n+i+7]+a[n+i+8]+a[n+i+9]+a[n+i+10]+a[n+i+11]+a[n+i+12]+a[n+i+13]+a[n+i+14]+a[n+i+15]+a[n+i+16]+a[n+i+17]+a[n+i+18]+a[n+i+19]+a[n+i+20]+a[n+i+21]+a[n+i+22]+a[n+i+23]+a[n+i+24]+a[n+i+25]+a[n+i+26]+a[n+i+27]+a[n+i+28]+a[n+i+29]+a[n+i+30]+a[n+i+31]+a[n+i+32]+a[n+i+33]+a[n+i+34]+a[n+i+35]+a[n+i+36]+a[n+i+37]+a[n+i+38]+a[n+i+39]+a[n+i+40]+a[n+i+41]+a[n+i+42]+a[n+i+43]+a[n+i+44]+a[n+i+45]+a[n+i+46]+a[n+i+47]+a[n+i+48]+a[n+i+49]+a[n+i+50]+a[n+i+51]+a[n+i+52]+a[n+i+53]+a[n+i+54]+a[n+i+55]+a[n+i+56]+a[n+i+57]+a[n+i+58]+a[n+i+59]+a[n+i+60]+a[n+i+61]+a[n+i+62]+a[n+i+64]+a[n+i+65]+a[n+i+66]+a[n+i+67]+a[n+i+68]+a[n+i+69]+a[n+i+70]+a[n+i+71]+a[n+i+72]+a[n+i+73]+a[n+i+74]+a[n+i+75]+a[n+i+76]+a[n+i+77]+a[n+i+78]+a[n+i+79]+a[n+i+80]+a[n+i+81]+a[n+i+82]+a[n+i+83]+a[n+i+84]+a[n+i+85]+a[n+i+86]+a[n+i+87]+a[n+i+88]+a[n+i+89]+a[n+i+90]+a[n+i+91]+a[n+i+92]+a[n+i+93]+a[n+i+94]+a[n+i+95]+par2+par1+par3);
 console.log(z);}</pre></code>
-<p>Caso queira deixar o home compartilhado no gluster…<br>
-formate e monte.
-</p>
-<code><pre>$cfdisk /dev/sdb1<br>
-$mount -t ext4 /dev/sdb1 /home</pre></code>
-<p>Do modo que será feito abaixo o gluster ficará no sda, e o home no sdb, para os usuários ficarem independentes  e não compartilhados no gluster, não será necessário a formatação e montagem.</p>
-<br>
-<p>Crie um diretŕio  /share<br>
-Crie um diretório /gluster/data<br>
-Crei um volume</p>
-<code><pre>$gluster volume create testvol replica 2 transport tcp server1.example.com:/data server2.example.com:/data</pre></code>
-<p> Start o volume</p>
-<code><pre>$gluster volume start testvol</pre></code>
-<p></p>Adicione no fstab para montar no boot.</p>
-<code><pre>$nano /etc/fstab<br><br>
-  @aero-no1:~$ cat /etc/fstab<br>
-# /etc/fstab: static file system information.<br>
-#
-# Use 'blkid' to print the universally unique identifier for a<br>
-# device; this may be used with UUID= as a more robust way to name devices<br>
-# that works even if disks are added and removed. See fstab(5).<br>
-#<br>
-# <file system> <mount point>   <type>  <options>       <dump>  <pass><br>
-# / was on /dev/md0 during installation<br>
-UUID=f8cef5df-a65b-4407-b3a1-cf2a1b1cb6b1 /               ext4    errors=remount-ro 0       1<br>
-# /gluster/data was on /dev/sdb1 during installation<br>
-/dev/sdb1 /home   ext4    defaults        0       2<br>
-aero-no1:/clusteraero	/share	glusterfs	defaults,_netdev	0	0<br>
-aero-no2:/clusteraero   /share  glusterfs       defaults,_netdev        0       0<br>
-aero-no3:/clusteraero   /share  glusterfs       defaults,_netdev        0       0<br>
-aero-no4:/clusteraero   /share  glusterfs       defaults,_netdev        0       0<br>
-aero-no5:/clusteraero   /share  glusterfs       defaults,_netdev        0       0<br>
-<br>
-# swap was on /dev/md1 during installation<br>
-UUID=2d165a0d-99eb-4879-bbcf-761fa81f8712 none            swap    sw              0       0<br>
-/dev/sr0        /media/cdrom0   udf,iso9660 user,noauto     0       0<br>
-/dev/sdd1       /media/usb0     auto    rw,user,noauto  0       0<br>
-</pre></code>
-<!--
-<h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-<h3>
-<a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-<p>Having trouble with Pages? Check out the documentation at <a href="https://help.github.com/pages">https://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>-->
+
     
   </body>
 </html>
