@@ -30,11 +30,15 @@
         <h3>
 <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link">Cluster de Alta disponibilidade com Gluster</span></a></h3>
 <a href="http://i.imgur.com/Yf8ta7S.png"><img src="http://i.imgur.com/Yf8ta7S.png"></img></a>
-<p>primeiro de tudo...</p><br>
-<p><a href="" class="user-mention">*Habilite o IPV6 em seu firewall.<br>
-*Use IP estático em cada nó nessa configuração.</a></p>
+<p>Olá pessoal, criei um script pra identificar visualizações em facebook.</p><br>
+<p><a href="" class="user-mention">*Explicando:.<br>
+</a></p>
 <br>
-<p>Na minha conf de rede habiltei o ipv6 pra fins de testes mesmo pra diminuir os warns dentro de:</p>
+<p>O Facebook armazena em código fonte quem visualiza seu perfil ou mesmo quem conversa com você também é armazenado em código fonte, independente se você está em sua página ou em qualquer página do Facebook.<br>
+
+Todas as páginas do Facebook são dinâmicas "flexíveis" então não pude achar um ponto único que pudesse ser fixo em todas as páginas, então fiz um "Search" e capturando todo o conteúdo do body.<br></p>
+var a = document.body.textContent;
+var n = a.search("InitialChatFriendsList");
 <pre><code>$/var/log/glusterfs/etc-glusterfs-glusterd.vol.log</code></pre>
 <pre><code>$ nano /etc/network/interfaces<br>
 allow-hotplug eth0<br>
