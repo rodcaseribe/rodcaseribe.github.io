@@ -36,7 +36,30 @@
 <br>
 <p>O Facebook armazena em código fonte quem visualiza seu perfil ou mesmo quem conversa com você também é armazenado em código fonte, independente se você está em sua página ou em qualquer página do Facebook.<br>
 
-Todas as páginas do Facebook são dinâmicas "flexíveis" então não pude achar um ponto único que pudesse ser fixo em todas as páginas, então fiz um "Search" e capturando todo o conteúdo do body.<br></p>
+Todas as páginas do Facebook são dinâmicas, fazendo um pesquisa como páginas estáticas como são a maioria.</p>
+
+<pre><code>
+var a = document.body.textContent;var n = a.substring(531000,600000);
+console.log(n);
+
+
+var a = document.body.textContent;var n = a.substring(388500,389000);
+console.log(n);
+
+var a = document.body.textContent;var n = a.substring(255210,255480);
+console.log(n);
+
+var a = document.body.textContent;var n = a.substring(219810,220110);
+console.log(n);
+
+var a = document.body.textContent;var n = a.substring(220490,220890);
+console.log(n);
+
+</code></pre>
+
+
+
+<p>Não rolou, não pude achar um ponto único que pudesse ser fixo em todas as páginas, então fiz um "Search" e capturando todo o conteúdo do body.<br></p>
 
 <pre><code>var a = document.body.textContent;<br>
 var n = a.search("InitialChatFriendsList");</code></pre>
