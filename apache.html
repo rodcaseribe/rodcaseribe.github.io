@@ -30,19 +30,19 @@
 
 Existem formas com Burp Suite entre outros softwares, porém utilizando interceptação, uma forma não muito prática e eficaz pra Wordlists grandes.
 <br>Em /etc/apache2/sites-availables/00-default.conf ou /etc/apache2/default-server.conf</p>
-		<pre><code><Directory "/srv/www/htdocs/ok">
+<pre><code><Directory "/srv/www/htdocs/ok">
 
-        Options Indexes FollowSymLinks MultiViews ExecCGI
-        #Allow from all
-        AuthType Basic
-        AuthName "ACESSO RESTRITO !! .. Sorry :("
-        AuthUserFile "/usr/local/bin/.htpasswd"
-        Require valid-user
+ Options Indexes FollowSymLinks MultiViews ExecCGI
+ #Allow from all
+ AuthType Basic
+ AuthName "ACESSO RESTRITO !! .. Sorry :("
+ AuthUserFile "/usr/local/bin/.htpasswd"
+ Require valid-user
 </Directory></code></pre>		
-		<p>Criar a hash de senha pelo htpasswd:</p>
-		<pre><code>
-		htpasswd -c /usr/local/bin/.htpasswd okok
-		</code></pre>
+<p>Criar a hash de senha pelo htpasswd:</p>
+<pre><code>
+htpasswd -c /usr/local/bin/.htpasswd okok
+</code></pre>		
 		
 		
 		
