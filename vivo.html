@@ -26,17 +26,27 @@
         <h3>
 <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link">Enviando SMS pelo modem 4g da vivo via portal.</span></a></h3>
 <img src="http://i.imgur.com/XNvZK9s.png?1"></img>
-<p>Nessa pesquisa procuro uma maneira alternativa de se contornar a autenticação do apache como forma de proteger ambientes críticos, cuja autenticação é usada em antenas no mercado, webcams e servidores com a finalidade de proteger e colocar uma barreira a mais antes de um formulário também autenticado.
-Existem formas com Burp Suite entre outros softwares, porém utilizando interceptação, uma forma não muito prática e eficaz para Wordlists grandes.
-<br><br>Em /etc/apache2/sites-available/000-default.conf ou /etc/apache2/default-server.conf</p>
-<pre><code><Directory "/srv/www/htdocs/ok">
- Options Indexes FollowSymLinks MultiViews ExecCGI
- #Allow from all
- AuthType Basic
- AuthName "ACESSO RESTRITO !! .. Sorry :("
- AuthUserFile "/usr/local/bin/.htpasswd"
- Require valid-user
-</Directory></code></pre>		
+<p>Nesse tipo de pesquiso procuro uma manira de enviar SMS pelo portal localhost da aplicação por Javascript, assim não precisaria utilizar software de terceiros.</p>
+<pre><code>
+
+javascript:var numeros = ["16+NUMERO", "16+NUMERO", "16+NUMERO"];
+var x = location.href;
+function loop(index) {
+   	if (index < numeros.length) {
+	      document.getElementById("number").value = numeros[index];
+	      document.getElementById("messages").value = "enviado!";
+	      doSend(0);
+	      x;      
+    setTimeout(function() { 
+		    loop(index+1); }, 8000);
+   }
+
+}
+	
+
+setTimeout(function() { loop(0); }, 8000);
+		
+</code></pre>		
 <p>Criar a hash de senha pelo htpasswd:</p>
 <pre><code>
 htpasswd -c /usr/local/bin/.htpasswd okok
