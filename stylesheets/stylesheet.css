@@ -1,7 +1,10 @@
 body {
   margin: 0;
   padding: 0;
-  background: #151515 url("http://www.concrete-furniture.com/rw_common/themes/media/images/editable_images/content-bg-blue.jpg") 0 0;
+  background: -webkit-linear-gradient(#70c4ea, white); 
+  background: -o-linear-gradient(#70c4ea, white); 
+  background: -moz-linear-gradient(#70c4ea, white);
+  background: linear-gradient(#70c4ea, white);
   color: #5d5555;
   font: 16px;
   line-height: 1.5;
