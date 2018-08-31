@@ -7,7 +7,7 @@ body {
   background: linear-gradient(#545454, #fffdfd);
   color: #ffffff;
   font: 16px;
-  line-height: 0.8;
+  /*line-height: 0.8;*/
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
 }
 
