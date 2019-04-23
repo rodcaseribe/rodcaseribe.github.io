@@ -161,7 +161,7 @@ blockquote {
 pre {
   /*background: rgb(249, 249, 249);
   background: rgb(62, 61, 61);*/
-  background: #1d1d1d;
+  background: #c5c5c5;
   border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 10px;
   font-size: 14px;
@@ -185,7 +185,7 @@ th {
   padding: 5px 10px;
 }
 
-td {
+td {  
   padding: 5px 10px;
 }
 
