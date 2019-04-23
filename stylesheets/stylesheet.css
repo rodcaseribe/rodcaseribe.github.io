@@ -43,7 +43,8 @@ li {
 */
 
 header {
-  background: rgba(0, 0, 0, 0.14);
+  /*background: rgba(0, 0, 0, 0.14);*/
+  background-image: url("https://i.imgur.com/jy6JSfE.png");
   width: 100%;
   border-bottom: 1px dashed #b5e853;
   padding: 20px 0;
