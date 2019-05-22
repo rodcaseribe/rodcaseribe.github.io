@@ -30,7 +30,7 @@
 
 Existem formas com Burp Suite entre outros softwares, porém utilizando interceptação, uma forma não muito prática e eficaz para Wordlists grandes.
 <br><br>Em /etc/apache2/sites-available/000-default.conf ou /etc/apache2/default-server.conf</p>
-<pre><code><Directory "/srv/www/htdocs/ok">
+<pre style="background: #FFC107;"><code><Directory "/srv/www/htdocs/ok">
 
  Options Indexes FollowSymLinks MultiViews ExecCGI
  #Allow from all
@@ -40,7 +40,7 @@ Existem formas com Burp Suite entre outros softwares, porém utilizando intercep
  Require valid-user
 </Directory></code></pre>		
 <p>Criar a hash de senha pelo htpasswd:</p>
-<pre><code>
+<pre style="background: #FFC107;"><code>
 htpasswd -c /usr/local/bin/.htpasswd okok
 </code></pre>		
 		
