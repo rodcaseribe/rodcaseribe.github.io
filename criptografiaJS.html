@@ -1,0 +1,135 @@
+<html>
+  <head>
+    <meta http-equiv=”Content-Type” content=”text/html; charset=iso-8859-1″>
+        <title>Criptografia 3DES com chave MD5</title>
+        <meta name="viewport" content="width=devide-width, initial-scale=1.0, text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta name="descricao" content="Criptografia 3DES"/>
+        <link rel="stylesheet" href="css/bootstrap.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <script src="https://cdn.rawgit.com/CryptoStore/crypto-js/3.1.2/build/rollups/tripledes.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/mode-ecb.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/crypto-js.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/forge/0.9.1/forge.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/utf8/3.0.0/utf8.js"></script>
+    <body>
+    <br>
+
+    <div align="center">
+        <h4 style="color:black" class="display-5">Criptografia e Descriptografia 3DES <br> com chave Pública</h4>
+    </div>
+    <br>
+    <div align="center">
+        <input type="text" id="chavePrincipal" name="fname" placeholder="Chave Md5" style="background-color: #ffaaaa;"><br><br>
+    </div>
+    <hr>
+    <div align="center">
+        <input type="text" id="fname" name="fname" placeholder="Texto a ser criptografado" style="background-color: #86ff8b;"><br><br>
+        <button type="button" class="btn btn-success" onclick="criptografarMsg(document.getElementById('fname').value)">Criptografar</button>
+    </div>
+    <br>
+    <div align="center">
+        Conteúdo Criptografado:
+    </div>
+    <br>
+    <div align="center">
+        <p id="criptografado"></p>
+    </div>
+    <hr>
+
+    <!-- descriptografia-->
+    <div align="center">
+        <input type="text" id="fname2" name="fname2" placeholder="Texto Criptografado" style="background-color: #ffeb3b;"><br><br>
+        <button type="button" class="btn btn-warning" onclick="descriptografarMsg(document.getElementById('fname2').value)">Descriptografar</button>
+    </div>
+    <br>
+    <div align="center">
+        Conteúdo Descriptografado:
+    </div>
+    <br>
+    <div align="center">
+        <p id="descriptografado"></p>
+    </div>
+
+
+    </body>
+    <script>
+
+        var mensagem = document.getElementById("fname");
+        mensagem.addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+            event.preventDefault();
+            criptografarMsg(mensagem);
+            }
+        });
+
+
+        function criptografarMsg(mensagem) {
+        try {
+          mensagem = utf8.encode(mensagem);
+        } catch {
+          mensagem = mensagem;
+        }
+        if(document.getElementById("chavePrincipal").value){
+            var chave = document.getElementById("chavePrincipal").value;
+        }
+        else{
+            alert("sem valor em chave")
+            return 0;
+        }
+        var key = CryptoJS.MD5(utf8.encode(chave)).toString(CryptoJS.enc.Latin1);
+        key = key + key.substring(0, 8);
+        var cipher = forge.cipher.createCipher('3DES-ECB', forge.util.createBuffer(key));
+        cipher.start({ iv: '' });
+        cipher.update(forge.util.createBuffer(mensagem, 'utf-8'));
+        cipher.finish();
+        var encrypted = cipher.output;
+        var retorno = forge.util.encode64(encrypted.getBytes());
+        document.getElementById("criptografado").innerHTML= retorno;
+        limpeza();
+      }
+
+      function limpeza(){
+        document.getElementById("fname").value = "";
+      }
+
+      function descriptografarMsg(texto) {
+        if(document.getElementById("chavePrincipal").value){
+            var chave = document.getElementById("chavePrincipal").value;
+        }
+        else{
+            alert("sem valor em chave")
+            return 0;
+        }
+        var chaveCriptografa = CryptoJS.MD5(utf8.encode(chave)).toString(CryptoJS.enc.Latin1);
+        chaveCriptografa = chaveCriptografa + chaveCriptografa.substring(0, 8);
+        var modoCriptografia = forge.cipher.createDecipher(
+          '3DES-ECB',
+          forge.util.createBuffer(chaveCriptografa)
+        );
+        var mensagemEncriptada = forge.util.decode64(texto);
+        modoCriptografia.start({ iv: '' });
+        modoCriptografia.update(forge.util.createBuffer(mensagemEncriptada, 'utf-8'));
+        modoCriptografia.finish();
+        var descriptografia = modoCriptografia.output;
+        var hexadecimal = descriptografia.toHex().toString();
+        var mensagemDescriptografada = '';
+        for (var n = 0; n < hexadecimal.length; n += 2) {
+          mensagemDescriptografada += String.fromCharCode(parseInt(hexadecimal.substr(n, 2), 16));
+        }
+        try {
+          var retornoMsg =  utf8.decode(mensagemDescriptografada);
+          document.getElementById("descriptografado").innerHTML= retornoMsg;
+          document.getElementById("fname2").value = "";
+        } catch {
+            var retornoMsg2 = mensagemDescriptografada;
+            document.getElementById("descriptografado").innerHTML= retornoMsg2;
+            document.getElementById("fname2").value = "";
+        }
+      }
+
+
+    </script>
+    
+
