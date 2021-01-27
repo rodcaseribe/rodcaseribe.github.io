@@ -1,0 +1,120 @@
+<html>
+  <head>
+    <meta http-equiv=”Content-Type” content=”text/html; charset=iso-8859-1″>
+        <title>Calculadora JS</title>
+        <meta name="viewport" content="width=devide-width, initial-scale=1.0, text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta name="descricao" content="Calculadora JS"/>
+        <link rel="stylesheet" href="bootstrap2.css"/>
+        <link rel="stylesheet" href="cssModificado.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <br><br>
+    <div align="center">
+        <h4 style="color:#6b6b6b;" class="display-5">Calculadora JS - Dev Rodolfo C.R</h4>
+        <div class="container">
+            
+            <div class="row">
+                <div class="col">
+                    
+                    <input type="text" id="view" name="fname2"  style="background-color: #fdfdfd;">
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <button type="button" class="btn btn-info" onclick="passagemValor('1');">1</button>
+              </div>
+              <div class="col-sm">
+                <button type="button" class="btn btn-info" onclick="passagemValor('2');">2</button>
+              </div>
+              <div class="col-sm">
+                <button type="button" class="btn btn-info" onclick="passagemValor('3');">3</button>
+              </div>
+              <div class="col-sm">
+                <button type="button" class="btn btn-info" onclick="passagemValor('+');">+</button>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <button type="button" class="btn btn-info" onclick="passagemValor('4');">4</button>
+              </div>
+              <div class="col-sm">
+                <button type="button" class="btn btn-info" onclick="passagemValor('5');">5</button>
+              </div>
+              <div class="col-sm">
+                <button type="button" class="btn btn-info" onclick="passagemValor('6');">6</button>
+              </div>
+              <div class="col-sm">
+                <button type="button" class="btn btn-info" onclick="passagemValor('-');">-</button>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <button type="button" class="btn btn-info" onclick="passagemValor('7');">7</button>
+              </div>
+              <div class="col-sm">
+                <button type="button" class="btn btn-info" onclick="passagemValor('8');">8</button>
+              </div>
+              <div class="col-sm">
+                <button type="button" class="btn btn-info" onclick="passagemValor('9');">9</button>
+              </div>
+              <div class="col-sm">
+                <button type="button" class="btn btn-info" onclick="passagemValor('*');">*</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <button type="button" class="btn btn-info" onclick="passagemValor('zerar');">CE</button>
+                  </div>
+              <div class="col-sm">
+                <button type="button" class="btn btn-info" onclick="passagemValor('0');">0</button>
+              </div>
+              <div class="col-sm">
+                <button type="button" class="btn btn-info" onclick="calcular(document.getElementById('view').value);">=</button>
+              </div>
+              
+              <div class="col-sm">
+                <button type="button" class="btn btn-info" onclick="passagemValor('-');">-</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+    </body>
+    <script>
+        function passagemValor(valor){
+            if(valor=='zerar'){
+                document.getElementById("view").value='';
+            }
+            else if(document.getElementById("view").value){
+                let valorNoCampor = document.getElementById("view").value;
+                let res = valorNoCampor.concat(valor);
+                document.getElementById("view").value=res;
+            }
+            else{
+                document.getElementById("view").value=valor;
+            }
+        }
+
+        function calcular(valorTotal){
+            document.getElementById("view").value= eval(valorTotal, 10);
+        }
+
+    </script>
+    </html>
